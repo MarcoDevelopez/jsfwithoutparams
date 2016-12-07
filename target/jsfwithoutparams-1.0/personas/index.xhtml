@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <h:head>
+    <title>Listado de Personas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+  </h:head>
+  <h:body>
+    <div class="container">
+      <h:form>
+        <a href="#{request.contextPath}/personas/nuevo" class="btn btn-success">
+          Agregar Persona</a>
+        <h:dataTable id="personasTable"
+                     value="#{personaBean.lstPersona}"
+                     var="persona"
+                     styleClass="table table-bordered table-striped">
+          <h:column>
+            <f:facet name="header">ID</f:facet>
+            <h:outputText value="#{persona.id}"/>
+          </h:column>
+          <h:column>
+            <f:facet name="header">Nombre</f:facet>
+            <a href="#{request.contextPath}/personas/ver/?id=#{persona.id}">
+              <h:outputText value="#{persona.nombres} #{persona.apellidos}"/>
+            </a>
+          </h:column>
+          <h:column>
+            <f:facet name="header">Telefono</f:facet>
+            <h:outputText value="#{persona.telefono}"/>
+          </h:column>
+        </h:dataTable>
+      </h:form>
+    </div>
+  </h:body>
+</html>
+

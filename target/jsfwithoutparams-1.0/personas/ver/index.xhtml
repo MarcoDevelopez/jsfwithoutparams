@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+  <h:head>
+    <title>Ver Persona</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+  </h:head>
+  <h:body>
+    <f:metadata>
+      <f:viewParam name="id" value="#{personaBean.persona.id}"/>
+      <f:viewAction action="#{personaBean.ver()}" />
+    </f:metadata>
+    <div class="container">
+      <h1>Ver Persona con ID: #{personaBean.persona.id}</h1>
+      <h:form>
+        <div class="form-group">
+          <label>Nombres</label>
+          <h:inputText  id="nombres" 
+                        value="#{personaBean.persona.nombres}" 
+                        styleClass="form-control" 
+                        required="true"
+                        requiredMessage="Nombres es obligatorio"
+                        readonly="true"/>
+          <h:message for="nombres"/>
+        </div>
+        <div class="form-group">
+          <label>Apellidos</label>
+          <h:inputText  id="apellidos" 
+                        value="#{personaBean.persona.apellidos}" 
+                        styleClass="form-control" 
+                        required="true"
+                        requiredMessage="Apellidos es obligatorio"
+                        readonly="true"/>
+          <h:message for="apellidos"/>
+        </div>
+        <div class="form-group">
+          <label>Telefono</label>
+          <h:inputText  id="telefono"
+                        value="#{personaBean.persona.telefono}" 
+                        styleClass="form-control"
+                        readonly="true"/>
+        </div>
+        <a href="#{request.contextPath}/personas/editar/?id=#{personaBean.persona.id}" class="btn btn-default">
+          Editar
+        </a>
+        <a href="#{request.contextPath}/personas/" class="btn btn-success">
+          Ir al Listado
+        </a>
+      </h:form>
+    </div>
+  </h:body>
+</html>
+
